@@ -47,6 +47,10 @@
 #define BITS_PER_SAMPLE 5
 #define SAMPLES_PER_PIXEL 2
 
+#define UI_MAX_X             480
+#define UI_MAX_Y             128
+#define OVERRIDE_FB_SETTINGS 1
+
 static char fb_device[256] = "/dev/fb0";
 static char touch_device[256] = "";
 static char kbd_device[256] = "";
@@ -99,6 +103,11 @@ static void init_fb(void)
         error_print("ioctl error\n");
         exit(EXIT_FAILURE);
     }
+
+    #if OVERRIDE_FB_SETTINGS
+    scrinfo.xres = UI_MAX_X
+    scrinfo.yres = UI_MAX_Y
+    #endif
 
     pixels = scrinfo.xres * scrinfo.yres;
     bytespp = scrinfo.bits_per_pixel / 8;
