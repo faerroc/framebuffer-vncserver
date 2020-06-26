@@ -105,8 +105,8 @@ static void init_fb(void)
     }
 
     #if OVERRIDE_FB_SETTINGS
-    scrinfo.xres = UI_MAX_X
-    scrinfo.yres = UI_MAX_Y
+    scrinfo.xres = UI_MAX_X;
+    scrinfo.yres = UI_MAX_Y;
     #endif
 
     pixels = scrinfo.xres * scrinfo.yres;
